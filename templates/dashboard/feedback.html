@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <title>Add Info</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <style>
+        .container {
+            /* remember to set a width */
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 100px;
+            background-color: cornsilk;
+            /*border:1px solid #42a5f5;*/
+        }
+
+        body {
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container z-depth-5">
+       <!-- <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input disabled value={{lat}} id="lat" type="text" class="validate">
+                        <label for="lat">Latitude</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input disabled value={{lng}} id="long" type="text" class="validate">
+                        <label for="long">Longitude</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="address" type="text" class="validate">
+                        <label for="address">Address</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="city" type="text" class="validate">
+                        <label for="city">City</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="state" type="text" class="validate">
+                        <label for="state">State</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="pin" type="text" class="validate">
+                        <label for="pin">Pincode</label>
+                    </div>
+                    <div class="col s12">
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group1" type="radio" />
+                                <span>Agro</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group1" type="radio" />
+                                <span>Education</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group1" type="radio" />
+                                <span>Medical</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group1" type="radio" />
+                                <span>Transport</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col s6">
+                        <a class="waves-effect waves-light btn">Submit</a>
+                    </div>
+                </div>
+            </form>
+        </div> -->
+        {% block content %}
+
+        <div class="row">
+            <form method="POST" class="post-form">{% csrf_token %}
+
+                <div class="input-field col s12">
+                    {{ form.lat.label_tag }}
+                    {{form.lat}}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.lng.label_tag }}
+                    {{form.lng}}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.address.label_tag }}
+                    {{form.address}}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.city.label_tag }}
+                    {{form.city}}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.state.label_tag }}
+                    {{form.state}}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.pin.label_tag }}
+                    {{form.pin}}
+                </div>
+                <div class="col s12">
+                    {% for choice in form.domain.field.choices %}
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group1" value="{{choice.0}}" type="radio" />
+                            <span>{{choice.1}}</span>
+                        </label>
+                    </p>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <!--<a class="waves-effect waves-light btn" >Submit</a>-->
+                        <input type="button" value="Post"/> 
+                    </div>
+                </div>
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+</body>
+
+</html>
