@@ -21,6 +21,7 @@ def FeedbackForm(request, lat, lng):
     return render(request, "dashboard/feedback.html", {'lat': lat, 'lng': lng, 'form': form})
 
 """
+
 def FeedbackForm(request, lat, lng):
     print("Inside feedback")
     if request.method == "POST":
@@ -44,5 +45,10 @@ def FeedbackForm(request, lat, lng):
     else:
         form = feedbackForm(initial={'lat':lat, 'lng':lng})
     return render(request, "dashboard/feedback.html", {'lat': lat, 'lng': lng, 'form': form})
+    """
+    def FeedbackForm(request, lat, lng):
+        f = feedbackForm(request.POST)
+        newfeedback = f.save()
+        """
 
     

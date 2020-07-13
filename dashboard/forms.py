@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import ModelForm
+from .models import FeedbackModel
 import datetime
 
 class feedbackForm(forms.Form):
@@ -16,8 +17,8 @@ class feedbackForm(forms.Form):
     pin = forms.DecimalField(required=True)
     domain = forms.ChoiceField(choices = CHOICES, widget=forms.RadioSelect)
     date = forms.DateField(initial = datetime.date.today, widget=forms.HiddenInput())
-
-"""class FeedbackForm1(ModelForm):
+"""
+class FeedbackForm1(ModelForm):
         class Meta:
             model = FeedbackModel
             fields = ['lat', 'lng', 'address', 'city', 'state', 'pin', 'domain', 'date']

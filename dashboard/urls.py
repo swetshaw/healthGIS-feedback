@@ -4,5 +4,6 @@ from .views import Dashboard, FeedbackForm
 urlpatterns = [
     path('', Dashboard, name='dashboard'),
     path('/dashboard', Dashboard, name='dashboard'),
-    path("feedback/<lat>/<lng>", FeedbackForm)
+    path("feedback/<lat>/<lng>", FeedbackForm),
+    path("feed", FeedbackForm),
 ]

@@ -1,5 +1,8 @@
 from django.contrib.gis.db import models  # for adding geospatial fields
 from django.forms import ModelForm
+from django.utils.translation import gettext_lazy as _
+
+#from django.db import models
 
 # Create your models here.
 class MelghatHamlets23Apr(models.Model):
@@ -24,19 +27,29 @@ class MelghatHamlets23Apr(models.Model):
         db_table = 'melghat_hamlets_23apr'
 
 
-class FeedbackModel(models.Model):
-    CHOICES =[('agro','Agro'),
+CHOICES =[('agro','Agro'),
          ('edu','Education'),
          ('med', 'Medical'),
          ('trans', 'Transport/Admin')]
-    lat = models.DecimalField(max_digits=65535, decimal_places=65535)
-    lng = models.DecimalField(max_digits=65535, decimal_places=65535)
+
+class FeedbackModel(models.Model):
+    lat = models.DecimalField(max_digits=10, decimal_places=10)
+    lng = models.DecimalField(max_digits=10, decimal_places=10)
     address = models.CharField(max_length=254)
     #date = models.DateField() #hidden field
     city = models.CharField(max_length=254)
     state = models.CharField(max_length=254)
-    pin = models.DecimalField(max_digits=65535, decimal_places=65535)
-    domain = models.CharField(max_length=254)
+    pin = models.DecimalField(max_digits=6, decimal_places=6)
+    domain = models.CharField(max_length=254, choices = CHOICES)
     date = models.DateField()
-
-    
+"""
+class feedbackForm(ModelForm):
+    class Meta:
+        model = FeedbackModel
+        fields = ['lat', 'lng', 'address', 'city', 'state', 'pin', 'domain', 'date']
+        error_messages = {
+            'pin': {
+                'max_digits': _("This writer's name is too long."),
+            },
+        }
+        """
